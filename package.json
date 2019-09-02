@@ -4,9 +4,12 @@
   "description": "koa2-learn",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "webpack",
-    "start": "webpack-dev-server --open"
+    "init_sql": "node ./src/project/initDb/index.js",
+    "dev": "npm run start_server & npm run dev_static",
+    "start_server": "node ./src/project/server/app.js",
+    "dev_static": "webpack --watch --config ./src/project/static/webpack-config/webpack.dev.config.js",
+    "start_static": "webpack --config ./src/project/static/webpack-config/webpack.prod.config.js",
+    "start": "npm run start_static & npm run start_server"
   },
   "repository": {
     "type": "git",
@@ -19,24 +22,49 @@
     "url": "https://github.com/tdnq/koa2-learn/issues"
   },
   "devDependencies": {
+    "@babel/core": "^7.5.5",
+    "@babel/plugin-proposal-class-properties": "^7.5.5",
+    "@babel/preset-env": "^7.5.5",
+    "@babel/preset-react": "^7.0.0",
+    "babel-loader": "^8.0.0-beta.0",
+    "chai": "^4.2.0",
     "clean-webpack-plugin": "^3.0.0",
     "css-loader": "^3.1.0",
     "extract-text-webpack-plugin": "^4.0.0-beta.0",
     "html-webpack-plugin": "^3.2.0",
     "less": "^3.9.0",
     "less-loader": "^5.0.0",
+    "mini-css-extract-plugin": "^0.8.0",
+    "mocha": "^6.2.0",
+    "optimize-css-assets-webpack-plugin": "^5.0.3",
+    "postloader": "^1.13.2",
     "style-loader": "^0.23.1",
-    "webpack": "^4.39.1",
-    "webpack-cli": "^3.3.6",
-    "webpack-dev-server": "^3.7.2"
+    "supertest": "^4.0.2",
+    "uglifyjs-webpack-plugin": "^2.2.0",
+    "webpack": "^4.39.2",
+    "webpack-cli": "^3.3.7",
+    "webpack-dev-server": "^3.7.2",
+    "webpack-merge": "^4.2.1"
   },
   "homepage": "https://github.com/tdnq/koa2-learn#readme",
   "dependencies": {
+    "antd": "^3.22.0",
+    "axios": "^0.19.0",
     "busboy": "^0.3.1",
     "ejs": "^2.6.2",
     "koa": "^2.8.1",
     "koa-bodyparser": "^4.2.1",
+    "koa-convert": "^1.2.0",
+    "koa-logger": "^3.2.1",
+    "koa-mysql-session": "0.0.2",
+    "koa-router": "^7.4.0",
+    "koa-session-minimal": "^3.0.4",
+    "koa-static": "^5.0.0",
     "koa-views": "^6.2.0",
-    "mustache": "^3.0.2"
+    "mustache": "^3.0.2",
+    "mysql": "^2.17.1",
+    "react": "^16.9.0",
+    "react-dom": "^16.9.0",
+    "validator": "^11.1.0"
   }
 }
