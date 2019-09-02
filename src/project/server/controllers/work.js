@@ -1,6 +1,15 @@
 module.exports = async (ctx)=>{
-    const title='work';
-     await ctx.render('work',{
-        title
-    });
+    console.log('word ctx',ctx.session);
+    if(ctx.session&&ctx.session.isLogin&&ctx.session.username){
+
+        const title='work';
+        const  sessionInfo = JSON.stringify(ctx.session);
+         await ctx.render('work',{
+            title,
+            sessionInfo
+        });
+    }
+    else{
+        ctx.redireact('/error');
+    }
 }

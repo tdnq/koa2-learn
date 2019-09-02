@@ -9,10 +9,6 @@ module.exports={
         console.log('body',ctx.request.body);
 
         let formData = ctx.request.body;
-        // let formData = {
-        //     username:"001",
-        //     password:12345
-        // }
         let result={
             success:false,
             message:'',
@@ -36,10 +32,10 @@ module.exports={
         }
         //添加会话信息
         if(result.success===true){
-            // let session=ctx.session;
-            // session.isLogin=true;
-            // session.username = userResult.name;
-            // session.userId= userResult.id;
+            let session=ctx.session;
+            session.isLogin=true;
+            session.username = userResult.name;
+            session.userId= userResult.id;
             ctx.redirect('/work');
         }else{
             // result.message=userCode.ERROR_SYS;

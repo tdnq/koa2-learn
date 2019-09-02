@@ -12,17 +12,17 @@ const config = require('../config');
 const routers = require('./routers/index');
 const app = new koa();
 
-// const sessionMysqlConfig = {
-//     user:config.database.user,
-//     password: config.database.password,
-//     database: config.database.database,
-//     host: config.database.host
-// };
+const sessionMysqlConfig = {
+    user:config.database.user,
+    password: config.database.password,
+    database: config.database.database,
+    host: config.database.host
+};
 
-// app.use(session({
-//     key:'USER_SID',
-//     store: new mysqlStore(sessionMysqlConfig)
-// }));
+app.use(session({
+    key:'USER_SID',
+    store: new mysqlStore(sessionMysqlConfig)
+}));
 
 app.use(bodyParser());
 app.use(convert(koaStatic(
