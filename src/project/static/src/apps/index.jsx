@@ -2,12 +2,22 @@ import  React from 'react';
 import SignIn from '../components/signIn/index.jsx';
 import SignUp from '../components/signUp/index.jsx';
 
+const isSignIn = (()=>{
+    const urlSearch = location.search;
+    if(urlSearch.includes('signIn')){
+        return true;
+    }else{
+        return false;
+    }
+})();
+
 class App extends React.Component{
     constructor(props){
         super(props);
         this.state={
-            selectSignIn:true
+            selectSignIn:isSignIn
         }
+        console.log(this.state);
         this.changeShow=this.changeShow.bind(this);
     }
     changeShow(){

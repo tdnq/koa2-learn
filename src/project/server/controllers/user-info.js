@@ -39,7 +39,7 @@ module.exports={
             ctx.redirect('/work');
         }else{
             // result.message=userCode.ERROR_SYS;
-            ctx.body=`<h1>登录出错</h1>`
+            ctx.redirect('/error');
         }
         ctx.body=result;
     },

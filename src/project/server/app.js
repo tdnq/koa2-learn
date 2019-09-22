@@ -19,15 +19,23 @@ const sessionMysqlConfig = {
     host: config.database.host
 };
 
+const THIRTY_MINTUES = 30*60*1000;
 app.use(session({
     key:'USER_SID',
-    store: new mysqlStore(sessionMysqlConfig)
+    store: new mysqlStore(sessionMysqlConfig),
+    cookie: {
+        maxAge: THIRTY_MINTUES
+    }
 }));
 
+app.use(koaLogger());
+
 app.use(bodyParser());
+
 app.use(convert(koaStatic(
     path.join(__dirname,'../static')
 )));
+
 // 配置服务端模板引擎中间件
 app.use(views(path.join(__dirname,'./views'),{
     extension:'ejs'

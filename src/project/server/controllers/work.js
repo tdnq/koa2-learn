@@ -1,5 +1,5 @@
 module.exports = async (ctx)=>{
-    console.log('word ctx',ctx.session);
+    console.log('word ctx',ctx);
     if(ctx.session&&ctx.session.isLogin&&ctx.session.username){
 
         const title='work';
@@ -10,6 +10,6 @@ module.exports = async (ctx)=>{
         });
     }
     else{
-        ctx.redireact('/error');
+        ctx.redirect('/error');
     }
 }

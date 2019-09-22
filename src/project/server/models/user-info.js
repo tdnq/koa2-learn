@@ -39,7 +39,7 @@ const dbUtils = require('../utils/db-util');
      async getOneByNameAndPassword(options){
          console.log('options',options);
          let _sql = `
-            SELECT * FROM user WHERE password=${options.password} AND name=${options.name}
+            SELECT * FROM user WHERE password='${options.password}' AND name='${options.name}'
             limit 1
          `;
          console.log(_sql);
